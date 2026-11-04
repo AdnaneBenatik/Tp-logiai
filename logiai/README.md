@@ -122,7 +122,8 @@ La route `POST /v1/predict` accepte un objet JSON contenant les sept caractéris
 
 ### Capture 7 — Schémas et validation
 
-![alt text](image-5.png)
+![git switch main
+](image-5.png)
 
 Swagger présente les schémas `Livraison`, `PredictionOut`, `HTTPValidationError` et `ValidationError`. La capture affiche notamment la structure **documentée** d'une erreur de validation, et non une erreur réellement déclenchée pendant le test.
 
