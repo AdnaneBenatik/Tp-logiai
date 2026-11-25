@@ -5,3 +5,7 @@ __pycache__/
 .env
 data/*.csv
 models/
+
+dist/
+*.egg-info/
+build/
