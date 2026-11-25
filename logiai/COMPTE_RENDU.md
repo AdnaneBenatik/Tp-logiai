@@ -207,3 +207,56 @@ L'Atelier 3 nous a permis de comprendre comment exposer un modèle de machine le
 Nous avons appris à valider les données avec Pydantic, gérer les erreurs HTTP, charger un modèle au démarrage et vérifier le comportement de l'API avec des tests automatisés.
 
 **Résultat de l'Atelier 3 : 13 tests réussis après correction du schéma et de la fonction de prédiction.**
+
+# Compte rendu — TP6 : Packaging de LogiAI
+
+## 1. Création du package Python
+Création du fichier `pyproject.toml` pour configurer le package LogiAI, ses dépendances et ses options d'installation.
+
+## 2. Installation du package
+Installation en mode éditable avec :
+
+```bash
+pip install -e ".[api,dev]"
+```
+
+## 3. Tests
+Exécution des tests avec :
+
+```bash
+python -m pytest --import-mode=importlib tests/
+```
+
+Résultat : **15 tests réussis**.
+
+## 4. Création de la commande CLI
+Création de `logiai/cli.py` et déclaration de la commande `logiai-predict` dans `pyproject.toml`.
+
+La commande permet de lancer une prédiction à partir d'un fichier JSON.
+
+## 5. Construction du package distribuable
+Construction des archives avec :
+
+```bash
+python -m build
+```
+
+Fichiers générés :
+- `logiai-0.1.0-py3-none-any.whl`
+- `logiai-0.1.0.tar.gz`
+
+Vérification du contenu du fichier `.whl` : les modules Python sont inclus, mais les données, modèles et tests ne le sont pas.
+
+## 6. Docker
+Création d'un `Dockerfile` basé sur `python:3.13-slim`.
+
+Construction de l'image avec :
+
+```bash
+docker build -t logiai:0.1.0 .
+```
+
+Résultat : **image Docker construite avec succès**.
+
+## Conclusion
+Le projet LogiAI est désormais structuré comme un package Python installable, dispose d'une commande CLI et peut être distribué sous forme d'archive Python et d'image Docker.
